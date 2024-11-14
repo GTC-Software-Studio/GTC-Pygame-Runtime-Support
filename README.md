@@ -15,7 +15,7 @@ Each component in the software package has almost the same method of use and att
 import pygame
 import GTC_Pygame_Runtime_Support as PRS
 screen = pygame.display.set_mode((200, 200))
-button = PRS.button_support.FeedbackButton([40, 40], [20, 20], '114', 15, screen, bg_color=[0, 145, 220],
+button = PRS.button.FeedbackButton([40, 40], [20, 20], '114', 15, screen, bg_color=[0, 145, 220],
                                            border_color=[209, 240, 255], text_color=[255, 255, 255],
                                            change_color=((0, 145, 220), (0, 225, 0)))
 running = 1
@@ -40,7 +40,7 @@ import pygame
 import GTC_Pygame_Runtime_Support as PRS
 
 screen = pygame.display.set_mode((500, 500))
-bp = PRS.basic_page.PlainPage([300, 300], [300, 1000], [100, 100], screen, 1.4, True)
+bp = PRS.page.PlainPage([300, 300], [300, 1000], [100, 100], screen, 1.4, True)
 
 if __name__ == '__main__':
     clock = pygame.time.Clock()
@@ -48,7 +48,7 @@ if __name__ == '__main__':
     for i in range(100):
         pygame.draw.line(bp.surface, [0, 0, 0], [0, 10 * i], [300, 10 * i])
     bp.set_as_background()
-    bp.add_button_trusteeship(PRS.button_support.FeedbackButton([280, 80], (10, 30), '114514', 62, bp.surface,
+    bp.add_button_trusteeship(PRS.button.FeedbackButton([280, 80], (10, 30), '114514', 62, bp.surface,
                                                                 bg_color=[0, 145, 220],
                                                                 border_color=[209, 240, 255], text_color=(255, 255, 255),
                                                                 change_color=((0, 145, 220), (0, 220, 145))))
