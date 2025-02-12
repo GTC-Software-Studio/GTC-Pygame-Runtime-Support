@@ -7,7 +7,7 @@ This package can be used for Pygame application development, including but not l
 
 You can download this package using pip
 
-``
+```
 $ pip install GTC_Pygame_Runtime_Support
 ```
 
