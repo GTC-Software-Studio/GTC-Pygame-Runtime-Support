@@ -1,5 +1,5 @@
 # GTC Pygame Runtime Support
-集成 Pygame 应用开发支持
+Поддержка разработки приложений на Pygame
 
 Finding an English version? [click here](https://github.com/GTC-Software-Studio/GTC-Pygame-Runtime-Support)
 
