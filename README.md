@@ -1,8 +1,6 @@
 # GTC Pygame Runtime Support
 Integrated Pygame Application Development Support
 
-Finding an English version? [click here](https://github.com/GTC-Software-Studio/GTC-Pygame-Runtime-Support)
-
 нашли русскую версию? [кликните сюда](https://github.com/GTC-Software-Studio/GTC-Pygame-Runtime-Support/blob/main/README-ru.md)
 
 This package can be used for Pygame application development, including but not limited to games and forms applications, and should be run on a Python environment older than 3.4.0.
