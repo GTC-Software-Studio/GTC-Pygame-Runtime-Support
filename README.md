@@ -14,7 +14,7 @@ $ pip install GTC_Pygame_Runtime_Support
 To use it, you can import the package like this:
 
 ``` python
-import GTC_Pygame_Runtime_Support as PRS
+import GTC_Pygame_Runtime_Support as gPRS
 ```
 
 Each component within the package has almost identical usage and properties, typically ``Class()`` for the constructor and ``item.operate()`` for mapping the component to the Surface. the above features will be demonstrated next using a feedback button as an example:
