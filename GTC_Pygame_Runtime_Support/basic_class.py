@@ -1,6 +1,9 @@
-from typing import List
+import os
+from typing import List, Tuple
+
 import pygame
 from pygame import SurfaceType
+
 from GTC_Pygame_Runtime_Support.error import UnexpectedParameter, error0x02
 
 pygame.display.init()
@@ -79,6 +82,9 @@ class BasicSurface:
             raise UnexpectedParameter(error0x02.format(BasicButton.__name__))
         self._button_trusteeship.append(button)
         self.do_element_show.append(False)
+
+    def show_button_trusteeship(self):
+        return self._button_trusteeship
 
     def operate_button(self, mouse_pos, effectiveness, do_cancel):
         for button in self._button_trusteeship:
@@ -166,10 +172,16 @@ class BasicPage(object):
             raise UnexpectedParameter(error0x02.format(BasicButton.__name__))
         self._button_trusteeship.append(button)
 
+    def show_button_trusteeship(self):
+        return self._button_trusteeship
+
     def add_surface_trusteeship(self, surface: BasicSurface):
         if not isinstance(surface, BasicSurface):
             raise UnexpectedParameter(error0x02.format(BasicSurface.__name__))
         self._surface_trusteeship.append(surface)
+
+    def show_surface_trusteeship(self):
+        return self._surface_trusteeship
 
     def add_page_trusteeship(self, page):
         """
@@ -180,5 +192,94 @@ class BasicPage(object):
             raise UnexpectedParameter(error0x02.format(BasicPage.__name__))
         self._page_trusteeship.append(page)
 
+    def show_page_trusteeship(self):
+        return self._page_trusteeship
+
     def operate(self, mouse_pos, effectiveness, mouse_wheel_status=None, operate_addons=False, mouse_press=None):
+        pass
+
+
+class BasicInputBox:
+    def __init__(self, size, pos, surface, default_text='', remind_text='', background_color=(255, 255, 255), border_color=((0, 0, 0), (0, 112, 255)),
+                 font_color=(0, 0, 0), font_type='SimHei', font_size=20, remind_text_color=(160, 160, 160), border_width=2, border_radius=1, fps=60,
+                 cursor_color=(0, 0, 0), select_area_color=((51, 103, 209), (200, 200, 200)), do_color_reverse=True):
+        self.size = size
+        self.pos = pos
+        self.rect = pygame.Rect(*pos, *size)
+        self.screen = surface
+        self.surface = pygame.Surface(size).convert_alpha()
+        self.background = None
+        self.text = default_text
+        self.remind_text = remind_text
+        self.background_color = background_color
+        self.border_color = border_color
+        self.font_color = font_color
+        self.font_type = font_type
+        self.font_size = font_size
+        if os.path.exists(font_type):
+            self.font_family = pygame.font.Font(font_type, font_size)
+        else:
+            self.font_family = pygame.font.SysFont(font_type, font_size)
+        self.remind_text_color = remind_text_color
+        self.border_width = border_width
+        self.border_radius = border_radius
+        self.fps = fps
+        self.cursor_color = cursor_color
+        self.dragging = False
+        self.surface.fill((0, 0, 0, 0))
+        self.select_area_color = select_area_color
+        self.do_color_reverse = do_color_reverse
+
+    def set_as_background(self):
+        self.background = self.surface.copy()
+
+    def in_area(self, mouse_pos):
+        return self.rect.collidepoint(*mouse_pos)
+
+    def handel(self, event_r: pygame.event.Event):
+        pass
+
+    def operate(self, mouse_pos, mouse_press):
+        """
+        :param mouse_pos:               鼠标坐标（相对目标表面）
+        :type mouse_pos:                List[int] | Tuple[int, int]
+        :param mouse_press:             鼠标状态（左键，中键，右键）
+        :type mouse_press:              List[bool] | Tuple[bool, bool, bool]
+        :return:
+        """
+        pass
+
+
+class BasicPopup:
+    def __init__(self, size, pos, screen):
+        """
+        :param size:                    弹出框大小
+        :type size:                     List[int] | Tuple[int, int]
+        :param pos:                     弹出框位置
+        :type pos:                      List[int] | Tuple[int, int]
+        :param screen:                  要显示在哪个 Surface 上
+        :type screen:                   pygame.SurfaceType
+        """
+        self.clock = pygame.time.Clock()
+        self.size = size
+        self.pos = pos
+        self.screen = screen
+        self.surface = pygame.Surface(size).convert_alpha()
+        self.background = None
+        self.surface_trusteeship: List[Tuple[pygame.Surface, List[int]]] = []
+        self.screen_size = [screen.get_width(), screen.get_height()]
+
+    def set_as_background(self):
+        self.background = self.surface.copy()
+
+    def add_surface_trusteeship(self, surface: pygame.Surface, final_pos: List[int]):
+        self.surface_trusteeship.append((surface, final_pos))
+
+    def animation(self, fps, acc, func=None):
+        pass
+
+    def show(self):
+        pass
+
+    def loop(self, function, args):
         pass
