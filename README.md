@@ -19,7 +19,7 @@ import GTC_Pygame_Runtime_Support as gPRS
 
 Each component within the package has almost identical usage and properties, typically ``Class()`` for the constructor and ``item.operate()`` for mapping the component to the Surface. the above features will be demonstrated next using a feedback button as an example:
 
-``python
+```python
 import pygame
 import GTC_Pygame_Runtime_Support as PRS
 screen = pygame.display.set_mode((200, 200))
@@ -33,11 +33,11 @@ while running.
     for event in pygame.event.get(): if event.type == pygame.
         if event.type == pygame.QUIT.
             running = 0
-    button.operate(pygame.mouse.get_pos(), pygame.mouse.get_pressed(3)[0])
+    button.operate(pygame.mouse.get_pos(), pygame.mouse.get_pressed(3))
     pygame.display.flip()
     clock.tick(60)
 
-``
+```
 As you can see, almost all of the important information is passed in when it is defined, so all that is needed is to pass in the mouse coordinates (mouse_pos) and the mouse state (mouse_press) when it is called.
 
 PRS provides a complete solution for scrolling pages, which can save programmers' hair:
@@ -73,9 +73,7 @@ if __name__ == ‘__main__’: __name__ == ‘__main__’: __name__ == ‘__main
         bp.operate(pygame.mouse.get_pos(), pygame.mouse.get_pressed(3)[0], mw, True)
         pygame.display.flip()
         clock.tick(60)
-``
+```
 The page not only allows you to scroll the page using the scroll wheel, but also to drag the page using the mouse, and the buttons work fine after using the `add_button_trusteeship()` function.
 
 The Surface layer of all functional components is open to developers, which allows them to modify the layer if they are not satisfied with the artwork of the original buttons. For example, in the above example of drawing a straight line to a scrolling page, the user can get the Surface of the page directly through `bp.surface` and set it to be the default background conveniently through `bp.set_as_background()`. to set it as the default background.
-
-Translated with www.DeepL.com/Translator (free version)
