@@ -1,6 +1,8 @@
 # GTC Pygame Runtime Support
 Integrated Pygame Application Development Support
 
+什么？你要中文版？那你咋点进俄语版来了？[点这](https://github.com/GTC-Byzantine/GTC-Pygame-Runtime-Support/)
+
 Finding an English version? [click here](https://github.com/GTC-Software-Studio/GTC-Pygame-Runtime-Support/)
 
 ## Установка пакета
